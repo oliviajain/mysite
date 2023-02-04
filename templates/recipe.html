@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const Recipe = (props) => {
+        const instructions = props.recipe.instructions.map((instruction, index) => {
+          return React.createElement("li", { key: index }, instruction);
+        });
+        const ingredients = props.recipe.instructions.map((instruction, index) => {
+          return React.createElement("li", { key: index }, instruction);
+        });
+        return React.createElement(
+          "div",
+          null,
+          React.createElement("h2", null, props.recipe.name),
+          React.createElement("p", null, "Ingredients: "),
+          React.createElement("ul", null, ingredients),
+          React.createElement("p", null, "Instructions: "),
+          React.createElement("ol", null, instructions)
+        );
+        // return React.createElement("ol", null, instructions);
+      };
+
+      const recipe = {{ recipe|tojson|safe }};
+
+      ReactDOM.render(
+        React.createElement(Recipe, { recipe: recipe }),
+        document.getElementById("root")
+      );
+    </script>
+
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Include Materialize JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+
+  </body>
+</html>
