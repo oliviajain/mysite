@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
+
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
   </head>
   <body>
     <div id="root"></div>
+    <script type ="module" src="static/app.js"></script>
+
+
+
     <script>
-      const List = (props) => {
-        return props.recipes.map((recipe, index) => {
+      const layout = (props) => {
+
+        // const ingredients = props.ingredients.map((recipe, index) => {
+        //   return React.createElement('ul', null,recipe)
+        // });
+        
+        const title = React.createElement("div", null, 
+          React.createElement('div', {className: 'recipe-title'}, 'Pantry'),
+          React.createElement("hr", {className: 'solid'})
+        );
+        const recipe_header = React.createElement("div", {className: 'recipe-card__heading'}, "Recipes");
+        const List = props.recipes.map((recipe, index) => {
           return React.createElement('ul', null, React.createElement('a', {href: `/recipes/${recipe}`}, recipe))
         });
+        const about_section = React.createElement('div', null, 
+          React.createElement('div', {className: 'recipe-card__heading'}, 'About'),
+          React.createElement('p', null, 'I love cooking, and I want everyone else to, too. With my way, there will be no exact measurements, just sights and smells! Let\'s get started. Just tell me what is in your pantry, and I will come up with some recipes, or you can explore all options below.')
+        );
+
+        const recipe_section = React.createElement('div', null, recipe_header, List);
+        return React.createElement('div', {className: 'recipe-card'}, title, about_section, recipe_section);
+
       };
 
       const recipes = {{ recipes|tojson|safe }};
+      const ingredients = {{ ingredients|tojson|safe }};
 
       ReactDOM.render(
-        React.createElement(List, { recipes: recipes }),
+        React.createElement(layout, { recipes: recipes, ingredients: ingredients}),
+        // React.createElement(checkbox, {ingredients: ingredients }),
         document.getElementById("root")
       );
     </script>
