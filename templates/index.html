@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
@@ -11,7 +12,7 @@
     <script>
       const List = (props) => {
         return props.recipes.map((recipe, index) => {
-          return React.createElement("ul", { key: index }, recipe);
+          return React.createElement('ul', null, React.createElement('a', {href: `/recipes/${recipe}`}, recipe))
         });
       };
 
@@ -22,14 +23,5 @@
         document.getElementById("root")
       );
     </script>
-
-    <!-- Include Bootstrap JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <!-- Include Materialize JavaScript -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
-
   </body>
 </html>

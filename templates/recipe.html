@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- <link href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css" rel="stylesheet" /> -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
   </head>
+
   <body>
     <div id="root"></div>
+    <!-- <div style="background:url(https://d2gk7xgygi98cy.cloudfront.net/6267-3-large.jpg) no-repeat 50% 50%; background-size:cover; height: 150px"></div> -->
     <script>
+      
       const Recipe = (props) => {
+        const title = React.createElement("div", {className: 'recipe-title'}, props.recipe.name, 
+        React.createElement("hr", {className: 'solid'})
+)
+
+        const image = React.createElement("img", {
+                                      src: `../static/${props.recipe.image}`,
+                                      style: { width: '400px', padding: '10px'}
+                                    });
+                          
         const ingredients = props.recipe.ingredients.map((ingredient, index) => {
           return React.createElement("li", { key: index }, ingredient);
         });
         const instructions = props.recipe.instructions.map((instruction, index) => {
           return React.createElement("li", { key: index }, instruction);
         });
-        return React.createElement(
+        const recipe = React.createElement(
           "div",
-          null,
-          React.createElement("h2", null, props.recipe.name),
-          React.createElement("p", null, "Ingredients: "),
-          React.createElement("ul", null, ingredients),
-          React.createElement("p", null, "Instructions: "),
-          React.createElement("ol", null, instructions)
-        );
-        // return React.createElement("ol", null, instructions);
+          {className: 'row'},
+          React.createElement("div", {className: 'column'}, image),
+          React.createElement("div", {className: 'column'},
+            React.createElement("div", {className: 'recipe-card__heading'}, "Ingredients"),
+            React.createElement("ul", {className: 'recipe-ingredients'}, ingredients)
+          )); 
+          const instructions_final = React.createElement('div', null,
+                React.createElement("div", {className: 'recipe-card__heading'}, "Instructions"),
+                React.createElement("ol", {className: 'recipe-instructions custom-checkbox'}, instructions)
+          );       
+          // return React.createElement("div", {className: "recipe-card"}, wrapper)
+        return React.createElement("div", {className: 'recipe-card'}, title, recipe, instructions_final);
       };
 
       const recipe = {{ recipe|tojson|safe }};
@@ -35,14 +55,6 @@
         document.getElementById("root")
       );
     </script>
-
-    <!-- Include Bootstrap JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <!-- Include Materialize JavaScript -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
-
+    </div>
   </body>
 </html>
