@@ -8,9 +8,9 @@ def index():
     print(recipes)
     return render_template('index.html', recipes=list(recipes.keys()))
 
-@app.route('/chocolate_cake')
-def chocolate_cake(): 
-    return render_template("recipe.html", recipe=recipes.get('Chocolate Cake'))
+@app.route('/chili_tofu')
+def chili_tofu(): 
+    return render_template("recipe.html", recipe=recipes.get('Chili Tofu'))
 
 if __name__ == '__main__':
     app.run(debug=True)
