@@ -10,10 +10,10 @@
     <div id="root"></div>
     <script>
       const Recipe = (props) => {
-        const instructions = props.recipe.instructions.map((instruction, index) => {
-          return React.createElement("li", { key: index }, instruction);
+        const ingredients = props.recipe.ingredients.map((ingredient, index) => {
+          return React.createElement("li", { key: index }, ingredient);
         });
-        const ingredients = props.recipe.instructions.map((instruction, index) => {
+        const instructions = props.recipe.instructions.map((instruction, index) => {
           return React.createElement("li", { key: index }, instruction);
         });
         return React.createElement(
