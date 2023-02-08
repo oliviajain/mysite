@@ -25,18 +25,12 @@ def get_top_recipes(selected_ingredients):
        
 @app.route("/handle_form_submit", methods=['POST'])
 def handle_form_submit():
-    selected_ingredients = request.form.getlist("selected_options")
+    selected_ingredients = request.get_json().get('selectedOptions')
     tops = get_top_recipes(selected_ingredients)
     return tops
 
 @app.route('/', methods=['GET', 'POST'])
 def index(): 
-    if request.method == 'POST':
-        selected_choices = []
-        for choice in ['choice1', 'choice2', 'choice3']:
-            if choice in request.form:
-                selected_choices.append(request.form[choice])
-        return str(selected_choices)
     ingredients = get_all_ingredients()
     return render_template('index.html', recipes=list(recipes.keys()), ingredients=list(ingredients))
 
