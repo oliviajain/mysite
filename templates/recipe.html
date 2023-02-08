@@ -3,17 +3,13 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!-- <link href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css" rel="stylesheet" /> -->
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
   </head>
 
   <body>
     <div id="root"></div>
-    <!-- <div style="background:url(https://d2gk7xgygi98cy.cloudfront.net/6267-3-large.jpg) no-repeat 50% 50%; background-size:cover; height: 150px"></div> -->
     <script>
       
       const Recipe = (props) => {
@@ -44,7 +40,6 @@
                 React.createElement("div", {className: 'recipe-card__heading'}, "Instructions"),
                 React.createElement("ol", {className: 'recipe-instructions custom-checkbox'}, instructions)
           );       
-          // return React.createElement("div", {className: "recipe-card"}, wrapper)
         return React.createElement("div", {className: 'recipe-card'}, title, recipe, instructions_final);
       };
 
