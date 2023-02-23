@@ -74,30 +74,172 @@ recipes = { "Chili Tofu": {
                     'Two minutes before the noodles are done, add a handful of spinach and your corn. Pour in coconut milk until the broth looks opaque.',
                     'Serve in a big bowl, and garnish with cherry tomatoes, tofu, mushrooms, and cilantro.'
                 ]
-            },
-             "Hearty Orzo": {
-                'name': 'Hearty Orzo',
-                'image': 'hearty_orzo.jpg',
+            }, 
+            "Mushroom Couscous": {
+                'name': 'Mushroom Couscous',
+                'image': 'mushroom_couscous.jpg',
                 'ingredients': [
                     'mushrooms', 
                     'onion',
-                    'bell pepper', 
-                    'cherry tomatoes', 
-                    'corn',
                     'spinach', 
-                    'orzo',
+                    'couscous',
                     'veggie broth',
                     'coconut milk',
                     'soy sauce'                
                 ],
                 'instructions': [
-                    'Dice 1/2 onion, slice a handful of mushrooms, and dice 1 bell pepper. Saute in oil in a big pan.',
-                    'Add a splash of soy sauce and heat 5 minutes or until translucent.',
-                    'Pour in 1 cup of veggie broth, another spoon of soy sauce, and just enough water for the orzo and bring to a boil.',
-                    'Add in your orzo and follow instructions. You may keep adding veggie broth or water as the orzo absorbs. Stir constantly.',
-                    'Halve your cherry tomatoes.',
-                    'About 2 minutes before the orzo is done, add in corn and spinach. Add coconut milk until opaque. Mix in cherry tomatoes.',
+                    'Dice 1/2 onion, slice a handful of mushrooms. Saute in oil in a big pan.',
+                    'Add a splash of soy sauce and a spoon and heat 3 minutes or until onions translucent and mushrooms are brown.',
+                    'Pour in about 1 cup of couscous and toast with some oregano for 1 minute. Mix well.'
+                    'Pour in 1 cup of veggie broth, and just enough water for the couscous and bring to a boil.',
+                    'You may keep adding veggie broth or water as the couscous absorbs. Stir constantly.',
+                    'About 2 minutes before the orzo is done, add spinach and coconut milk until opaque.',
                     'Taste the broth for richness and adjust to your liking. Enjoy.'
                 ]
-            }
+            }, 
+            "Edamame Dumplings": {
+                'name': 'Edamame Dumplings',
+                'image': 'edamame_dumplings.jpg',
+                'ingredients': [
+                    'edamame', 
+                    'ginger',
+                    'carrots', 
+                    'green onion', 
+                    'cilantro',
+                    'wonton wrappers',
+                    'miso paste',
+                    'veggie broth',
+                    'sesame oil',
+                    'soy sauce', 
+                    'truffle oil'              
+                ],
+                'instructions': [
+                    'This recipe is extremely flexible so you can make it with whatever ingredients you have!', 
+                    'Prepare edamame according to instructions. If frozen, boil in water for 4 minutes or until they float to the top.', 
+                    'Finely chop ginger, and optionally carrots and mushrooms if you have them.', 
+                    'Saute the finely chopped items in the pan on low heat for 5 minutes.', 
+                    'Remove the edamame from the boil and coat soy sauce just over the top layer of edamame until it looks colored. Add in about a spoon of sesame oil.', 
+                    'Blend with a immersion blender or blender until you get a thick paste. Some chunks of edamame are good!', 
+                    'Mix the chopped vegetables into this paste. This will be your filling.', 
+                    'Prepare your broth. Mix a spoon of miso with 2 big spoons of soy sauce, 2 spoons of veggie broth and add water until you have enough broth to boil.', 
+                    'Put on the heat, and bring to a boil.',
+                    'Meanwhile, prepare the dumplings. Place a tiny spoonful of the filling into your wonton wrapper and fold it in half to create a triangle. Leave space for the edges to be sealed with water. Press shut.', 
+                    'As your dumplings are ready, put them in the boiling water and remove when they float to the top.',
+                    'Start collecting the dumplings in a bowl.' 
+                    'Once you are out of filling, pour the broth atop the dumplings in the bowl.', 
+                    'Garnish with chopped green onion, cilantro, and edamame.', 
+                    'If you have truffle oil, finish with a drizze of truffle oil! Enjoy!'
+                ] 
+            },
+            "Eggplant Dip": {
+                'name': 'Eggplant Dip',
+                'image': 'eggplant_dip.jpg',
+                'ingredients': [
+                    'eggplant', 
+                    'onion',
+                    'tomato sauce', 
+                    'mushrooms',
+                    'chili garlic sauce',
+                    'soy sauce'                
+                ],
+                'instructions': [
+                    'This one requires an instant pot or a big pot with a lid.',
+                    'Dice the eggplant into square chunks. Dice 1/2 an onion.',
+                    'Saute the onion in oil.',
+                    'Once translucent, add a big spoon chili garlic sauce and pour in some tomato sauce (a big splat\'s worth).',
+                    'Add your diced eggplant and mix well. Let sit for 2 minutes.'
+                    'Pour some water until about 1/2 of the eggplant is submerged. You should be able to see some eggplant on top still. Eggplant is watery so it will contribute some too.',
+                    'Cover and let sit until the water is absorbed. If using an instant pot, turn on pressure cook high for 8 minutes.',
+                    'Once the water is absorbed, the eggplant should be squishy. Push it with a spatula, and it should be soft the touch. If not, add more water and let it sit longer.',
+                    'Once soft, mix well and mush the eggplant. Add in a drizzle of soy suace and mix to taste.',
+                    'Enjoy it with some pita, and it is ready to serve.'
+                ]
+            },
+            "Overnight Oats": {
+                'name': 'Overnight Oats',
+                'image': 'overnight_oats.jpg',
+                'ingredients': [
+                    'rolled oats', 
+                    'oat milk',
+                    'honey', 
+                    'vanilla',
+                    'cinnamon',
+                    'chia seeds',
+                ],
+                'instructions': [
+                    'Pour a 1:1 ratio of oats to milk.',
+                    'Add a splash of vanilla and drizzle honey all over.',
+                    'Pour a lot of cinnamon on top, and add a spoon of chia seeds.'
+                    'Mix well, and put in the fridge overnight.', 
+                    'Top with fruit in the morning and serve.'
+                ]
+            }, 
+            "Butter Sage Gnocchi": {
+                'name': 'Butter Sage Gnocchi',
+                'image': 'butter_sage_gnocchi.jpg',
+                'ingredients': [
+                    'sweet potato', 
+                    'flour',
+                    'butter', 
+                    'walnuts',
+                    'sage',
+                    'salt'
+                ],
+                'instructions': [
+                    'Prepare 1 sweet potato. Poke holes in the skin with a fork. Either bake at 400 for 20 minutes, or put in the microwave for 5 minutes.',
+                    'Meanwhile, boil the water to cook the gnocchi.',
+                    'Peel and mash filling. Let cool.',
+                    'For every 1 sweet potato, add 1 cup of flour and a pinch of salt.',
+                    'Mix the crumble until doughy (i.e. just barely not sticky). Add flour as needed.', 
+                    'Cut into fourths and roll into logs. Cut about 1/2 inch pieces. These are your gnocchi.', 
+                    'Place the gnocchi into the boiling water. When they float to the top, they are ready.',
+                    'Prepare the sauce. Brown a tablespoon of butter for about 2 minutes. Add in full sage leaves and chopped walnuts.', 
+                    'Let infuse for 4 minutes until the mixture is a dark brown color and bubbles. Take off the heat immediately.',
+                    'Once the gnocchi is ready, add to sauce with whatever pasta water comes with the gnocchi and mix well.',
+                    'Serve warm, so reheat for 1 minute if needed.'
+                ]
+            }, 
+            "Mushroom Pizza": {
+                'name': 'Mushroom Pizza',
+                'image': 'mushroom_pizza.jpg',
+                'ingredients': [
+                    'pizza dough', 
+                    'butter',
+                    'flour', 
+                    'mushroom',
+                    'soy sauce',
+                    'onion',
+                    'spinach'
+                ],
+                'instructions': [
+                    'Roll out your dough and prebake until 2 minutes left according to instructions.',
+                    'Meanwhile, slice mushrooms and onions.',
+                    'Carmelize onions. Add a tablespoon of butter and sliced onions to a pan and cook for 10 minutes on medium to high heat.',
+                    'Saute mushrooms in a splash soy sauce and some butter until brown and fragrant. About 5 minutes.',
+                    'Prepare sauce. Lightly brown 2 tablespoons of butter with salt and pepper.' 
+                    'After 3 minutes, Pour in some milk until lightly opaque. Let mix on medium high heat for 5 minutes or until lightly boiling.',
+                    'When the pizza has 3 minutes left, remove and cover with sauce.',
+                    'Slice spinach. Arrange mushrooms, carmelized onions, and spinach on top and finish cooking.',
+                    'After removing, immediately shave parmesan or white cheddar all over and serve!'
+                ]
+            }, 
+            "Margarita Pizza": {
+                'name': 'Margarita Pizza',
+                'image': 'margarita_pizza.jpg',
+                'ingredients': [
+                    'pizza dough', 
+                    'cherry tomatoes', 
+                    'spinach',  
+                    'marinara sauce', 
+                    'feta', 
+                    'mozzarella'
+                ],
+                'instructions': [
+                    'Roll out your dough and prebake until 2 minutes left according to instructions.',
+                    'Meanwhile, halve cherry tomatoes.',
+                    'When the pizza has 3 minutes left, remove and cover with marinara sauce.',
+                    'Slice spinach. Arrange cherry tomatoes, spinach, mozzarella or feta crumbles all over the pizza.',
+                    'After removing, immediately shave parmesan or white cheddar all over. Sprinkle oregano and serve!'
+                ]
+            }, 
         }
