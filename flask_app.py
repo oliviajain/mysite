@@ -34,7 +34,15 @@ def index():
     ingredients = get_all_ingredients()
     return render_template('index.html', recipes=list(recipes.keys()), ingredients=list(ingredients))
 
-@app.route('/recipes/<recipe_name>')
+@app.route('/about')
+def about():
+    return render_template("about.html", ingredients=list(get_all_ingredients()))
+
+@app.route('/recipes')
+def list_recipes():
+    return render_template("recipes.html", recipes=list(recipes.keys()))
+
+@app.route('/recipe/<recipe_name>')
 def recipe(recipe_name):
     return render_template("recipe.html", recipe=recipes.get(recipe_name))
 
