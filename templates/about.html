@@ -46,6 +46,15 @@
                           ])
                         ]);
 
+        const title = React.createElement("div", null, 
+          React.createElement('div', {className: 'recipe-title'}, 'Pantry'),
+          React.createElement("hr", {className: 'solid'})
+        );
+        const about_section = React.createElement('div', null, 
+          React.createElement('div', {className: 'recipe-card__heading'}, 'About'),
+          React.createElement('p', {className: 'recipe-card__body'}, 'I think cooking can be really fun and it should be about the experience! With my methods, there will be no exact measurements, just sights, sounds, and smells. Let\'s get started. Just tell me what is in your pantry, and I will come up with some recipes, or you can explore all options below.')
+        );
+
         const CheckboxForm = ({ options }) => {
           const [selectedOptions, setSelectedOptions] = React.useState([]);
     
@@ -103,35 +112,24 @@
         
         const options = props.ingredients;      
         checkbox = React.createElement(CheckboxForm, { options });
-        
-        const title = React.createElement("div", null, 
-          React.createElement('div', {className: 'recipe-title'}, 'Pantry'),
-          React.createElement("hr", {className: 'solid'})
-        );
-        const recipe_header = React.createElement("div", {className: 'recipe-card__heading'}, "Recipes");
-        const List = props.recipes.map((recipe, index) => {
-          return React.createElement('ul', null, React.createElement('a', {href: `/recipe/${recipe}`}, recipe))
-        });
-        const about_section = React.createElement('div', null, 
-          React.createElement('div', {className: 'recipe-card__heading'}, 'About'),
-          React.createElement('p', {className: 'recipe-card__body'}, 'I think cooking can be really fun and it should be about the experience! With my methods, there will be no exact measurements, just sights, sounds, and smells. Let\'s get started. Just tell me what is in your pantry, and I will come up with some recipes, or you can explore all options below.')
-        );
 
         const ingredient_section = React.createElement('div', null, 
           React.createElement('div', {className: 'recipe-card__heading'}, 'Ingredients'),
         );
 
+        const image = React.createElement('div', {style: {textAlign: 'center'}}, React.createElement("img", {
+                                      src: `../static/me.png`,
+                                      style: { width: '200px', padding: '10px'}
+                                    }));
 
-        const recipe_section = React.createElement('div', null, recipe_header, List);
-        return React.createElement('div', {className: 'recipe-card'}, header, title, about_section, ingredient_section, checkbox, recipe_section);
+        return React.createElement('div', {className: 'recipe-card'}, header, title, image, about_section, ingredient_section, checkbox);
 
       };
 
-      const recipes = {{ recipes|tojson|safe }};
       const ingredients = {{ ingredients|tojson|safe }};
 
       ReactDOM.render(
-        React.createElement(layout, { recipes: recipes, ingredients: ingredients}),
+        React.createElement(layout, {ingredients: ingredients}),
         document.getElementById("root")
       );
     </script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <style>
+      /* Checkbox Form */ 
+      .checkbox-form {
+          display: flex;
+          flex-wrap: wrap;
+          font-size: 16px;
+      }
+
+      .checkbox-form input[type="checkbox"] {
+          flex: 1 0 33%;
+          margin: 10px;
+      }
+
+      .checkbox-form input[type="submit"] {
+        margin: 10px;
+        margin-top: 10px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const layout = (props) => {
+
+        const header = React.createElement('div', {className: 'header'}, [
+                          React.createElement('nav', null, [
+                            React.createElement('ul', null, [
+                              React.createElement('li', null, [
+                                React.createElement('a', {href: `/`}, 'Home')
+                              ]),
+                              React.createElement('li', null, [
+                                React.createElement('a', {href: `/about`}, 'About')
+                              ]),
+                              React.createElement('li', null, [
+                                React.createElement('a', {href: `/recipes`}, 'Recipes')
+                              ])
+                            ])
+                          ])
+                        ]);
+
+        const title = React.createElement("div", null, 
+          React.createElement('div', {className: 'recipe-title'}, 'Pantry'),
+          React.createElement("hr", {className: 'solid'})
+        );
+        const recipe_header = React.createElement("div", {className: 'recipe-card__heading'}, "Recipes");
+        const List = props.recipes.map((recipe, index) => {
+          return React.createElement('ul', null, React.createElement('a', {href: `/recipe/${recipe}`}, recipe))
+        });
+
+        const recipe_section = React.createElement('div', null, recipe_header, List);
+        return React.createElement('div', {className: 'recipe-card'}, header, title, recipe_section);
+
+      };
+
+      const recipes = {{ recipes|tojson|safe }};
+
+      ReactDOM.render(
+        React.createElement(layout, { recipes: recipes}),
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>

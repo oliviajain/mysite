@@ -13,6 +13,23 @@
     <script>
       
       const Recipe = (props) => {
+
+        const header = React.createElement('div', {className: 'header'}, [
+                          React.createElement('nav', null, [
+                            React.createElement('ul', null, [
+                              React.createElement('li', null, [
+                                React.createElement('a', {href: `/`}, 'Home')
+                              ]),
+                              React.createElement('li', null, [
+                                React.createElement('a', {href: `/about`}, 'About')
+                              ]),
+                              React.createElement('li', null, [
+                                React.createElement('a', {href: `/recipes`}, 'Recipes')
+                              ])
+                            ])
+                          ])
+                        ]);
+
         const title = React.createElement("div", {className: 'recipe-title'}, props.recipe.name, 
         React.createElement("hr", {className: 'solid'})
 )
@@ -40,7 +57,7 @@
                 React.createElement("div", {className: 'recipe-card__heading'}, "Instructions"),
                 React.createElement("ol", {className: 'recipe-instructions custom-checkbox'}, instructions)
           );       
-        return React.createElement("div", {className: 'recipe-card'}, title, recipe, instructions_final);
+        return React.createElement("div", {className: 'recipe-card'}, header, title, recipe, instructions_final);
       };
 
       const recipe = {{ recipe|tojson|safe }};
