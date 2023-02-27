@@ -77,10 +77,10 @@
                 selectedOptions: selectedOptions,
               })
               .then(function (response) {
-                const recipe_list = Object.keys(response.data).map((recipe_name) => {
+                const recipe_list = response.data.map((recipe, index) => {
                   return React.createElement('ul', {className: 'recipe-card'}, 
-                                              React.createElement('a', {href: `/recipe/${recipe_name}`}, recipe_name),
-                                              React.createElement('div', null, 'Missing: ' + response.data[recipe_name].join(', '))
+                                              React.createElement('a', {href: `/recipe/${recipe['name']}`}, recipe['name']),
+                                              React.createElement('div', null, (recipe['missing'].length > 0 ?  'Missing: ' + recipe['missing'].join(', ') : 'You have everything :)'))
                   )
                 });
                 return ReactDOM.render(

@@ -206,7 +206,7 @@ recipes = { "Chili Tofu": {
                     'pizza dough', 
                     'butter',
                     'flour', 
-                    'mushroom',
+                    'mushrooms',
                     'soy sauce',
                     'onion',
                     'spinach'
@@ -230,7 +230,7 @@ recipes = { "Chili Tofu": {
                     'pizza dough', 
                     'cherry tomatoes', 
                     'spinach',  
-                    'marinara sauce', 
+                    'tomato sauce', 
                     'feta', 
                     'mozzarella'
                 ],
