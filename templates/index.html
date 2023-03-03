@@ -100,9 +100,40 @@
             React.createElement("input", { type: "submit", value: "Submit" })
           );
         };
+
+      const PhotoGrid = ({ photos }) => {
+        const [hoveredPhoto, setHoveredPhoto] = React.useState([]);
+        const imgElements = photos.map((photo) =>
+          React.createElement("div", {
+            className: "photo-container",
+            key: photo.src,
+            onMouseOver: () => setHoveredPhoto(photo),
+            onMouseLeave: () => setHoveredPhoto(null),
+          }, [
+            React.createElement("img", {
+              src: `../static/${photo.src}`,
+              style: { width: '400px', padding: '10px'},
+              alt: photo.caption,
+              key: photo.caption + "-img",
+            }),
+            hoveredPhoto === photo && React.createElement("div", {
+              className: "photo-caption",
+              key: photo.src + "-caption",
+            }, React.createElement('a', {
+              href: photo.link
+            }, photo.caption))
+          ])
+        );
+      
+
+        return React.createElement('div', {className: 'photo-full'}, React.createElement("div", {
+          className: "photo-grid",
+        }, imgElements));
+      }
         
         const options = props.ingredients;      
         checkbox = React.createElement(CheckboxForm, { options });
+        photo_grid = React.createElement(PhotoGrid, { photos });
         
         const title = React.createElement("div", null, 
           React.createElement('div', {className: 'recipe-title'}, 'Pantry'),
@@ -122,16 +153,17 @@
         );
 
 
-        const recipe_section = React.createElement('div', null, recipe_header, List);
+        const recipe_section = React.createElement('div', null, recipe_header, photo_grid);
         return React.createElement('div', {className: 'recipe-card'}, header, title, about_section, ingredient_section, checkbox, recipe_section);
 
       };
 
       const recipes = {{ recipes|tojson|safe }};
       const ingredients = {{ ingredients|tojson|safe }};
+      const photos = {{ photos|tojson|safe }};
 
       ReactDOM.render(
-        React.createElement(layout, { recipes: recipes, ingredients: ingredients}),
+        React.createElement(layout, { recipes: recipes, ingredients: ingredients, photos: photos}),
         document.getElementById("root")
       );
     </script>

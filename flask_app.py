@@ -29,7 +29,15 @@ def handle_form_submit():
 @app.route('/', methods=['GET', 'POST'])
 def index(): 
     ingredients = get_all_ingredients()
-    return render_template('index.html', recipes=sorted(recipes.keys()), ingredients=list(ingredients))
+    photos = []
+    for key, value in recipes.items(): 
+        photos.append({
+            'src': value.get('image'),
+            'caption': key,
+            'link': f'/recipe/{key}',
+        })  
+    print(photos)
+    return render_template('index.html', recipes=sorted(recipes.keys()), ingredients=list(ingredients), photos=list(photos))
 
 @app.route('/about')
 def about():
