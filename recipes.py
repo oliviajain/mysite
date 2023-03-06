@@ -318,6 +318,25 @@ recipes = {"Chili Tofu": {
         'Pour in as much corn and black beans as you want. Add a huge spoon of cumin or whatever taco seasoning you have and mix well.',
         'After 3 minutes, turn off heat and top with cheese, pickeled onion, and cilantro.'
     ]
+}, 'Souvla Wrap': {
+    'name': 'Souvla Wrap',
+    'image': 'souvla.PNG',
+    'ingredients': [
+        'sweet potato', 
+        'walnuts', 
+        'feta',
+        'harissa', 
+        'mayo', 
+        'onion',
+        'tortilla'
+    ],
+    'instructions': [
+        'Slice sweet potato and toss in oil. Bake or airfry at 400 for 15 minutes.',
+        'Mix a spoon of harissa with two spoons of mayo.',
+        'Finely chop walnuts and feta. These add nuttiness. Toss walnuts on pan over medium high heat for 5 minutes or until slightly toasted.',
+        'On a tortilla, spread your harissa mayo, and plate your sweet potato.',
+        'Top with lots of feta, toasted walnuts, and pickeled red onion.',
+        'Wrap up and slice diagonally to serve!'
+    ] 
 }
-      
 }
