@@ -241,5 +241,83 @@ recipes = {"Chili Tofu": {
         'Slice spinach. Arrange cherry tomatoes, spinach, mozzarella or feta crumbles all over the pizza.',
         'After removing, immediately shave parmesan or white cheddar all over. Sprinkle oregano and serve!'
     ]
+}, "Tofu Taco": {
+    'name': 'Tofu Taco',
+    'image': 'tofu_taco.jpg',
+    'ingredients': [
+        'tofu', 
+        'soy sauce', 
+        'tomato sauce',
+        'veggie broth', 
+        'chilies', 
+        'cumin',
+        'red chili powder',
+        'tortilla',
+        'green salsa', 
+        'onion',
+        'cilantro',
+        'feta'
+    ],
+    'instructions': [
+        'Press your tofu for 15 minutes.',
+        'Meanwhile, chop cilantro and dice 1/4 of a white onion. Set aside as your toppings.',
+        'Crumble and marinate tofu in soy sauce. Bake or airfry at 400 degrees for 15 minutes.',
+        'In a pan, saute chilies in olive oil. Add in crumbled tofu and pour in veggie broth until you can see the liquid on the pan.',
+        'Add in two big spoons of tomato sauce, and a spoon of cumin and red chili powder each. Mix well and bring to a simmer.',
+        'Mix the tofu and cook unti the tofu absorbs all the liquid. This will make it quite juicy.',
+        'Remove the tofu once colored and a little golden.',
+        'Assemble your taco on a tortilla with chopped onion, green salsa, and top with cilantro.'
+    ]
+}, 'Burrito Bowl': {
+    'name': 'Burrito Bowl',
+    'image': 'burrito_bowl.jpeg',
+    'ingredients': [
+        'tofu', 
+        'soy sauce', 
+        'tomato sauce',
+        'veggie broth', 
+        'chilies', 
+        'cumin',
+        'red chili powder',
+        'green salsa', 
+        'red onion',
+        'corn',
+        'jalapeno',
+        'black beans',
+        'avocado', 
+        'lime'
+        'cilantro',
+        'feta'
+    ],
+    'instructions': [
+        'Reference tofu tacos to prepare tofu.', 
+        'Prepare black beans. Empty a can of black beans into a pan with 1/4 of a bottle of tomato sauce or 3 big spoons. Add cumin powder, salt, and mix well.',
+        'Dice 1/4 of a red onion.',
+        'Make corn salsa. Finely dice 1 inch of a jalapeno, and just a pinch of red onion. Mix with corn, a squeeze of lime, and salt.',
+        'Mash avocado with remaining red onion, lime juice, and salt until creamy. If you have tomatoes, add in a little bit diced.',
+        'Assemble your bowl. Top with cilantro, feta, and green salsa.'
+    ],
+}, 'Sweet Potato Chowder': {
+    'name': 'Sweet Potato Chowder',
+    'image': 'sweet_potato_chowder.jpg',
+    'ingredients': [
+        'sweet potato', 
+        'carrots', 
+        'veggie broth',
+        'corn',
+        'black beans',
+        'cheese', 
+        'onion', 
+        'cilantro',
+        'cumin'
+    ],
+    'instructions': [
+        'Chop carrots and peel and dice sweet potatoes.'
+        'Add to a pot with 1 cup veggie broth. Bring to a boil and cover, allowing the pressure to soften the veggies.',
+        'Once softened, about 15 minutes, use an immersion blender to make a creamy soup.', 
+        'Pour in as much corn and black beans as you want. Add a huge spoon of cumin or whatever taco seasoning you have and mix well.',
+        'After 3 minutes, turn off heat and top with cheese, pickeled onion, and cilantro.'
+    ]
 }
+      
 }
