@@ -1,105 +1,106 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
-    <style>
-      /* Checkbox Form */ 
-      .checkbox-form {
-          display: flex;
-          flex-wrap: wrap;
-          font-size: 16px;
-      }
 
-      .checkbox-form input[type="checkbox"] {
-          flex: 1 0 33%;
-          margin: 10px;
-      }
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <style>
+    /* Checkbox Form */
+    .checkbox-form {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 16px;
+    }
 
-      .checkbox-form input[type="submit"] {
-        margin: 10px;
-        margin-top: 10px;
-      }
-      
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script>
-      const layout = (props) => {
+    .checkbox-form input[type="checkbox"] {
+      flex: 1 0 33%;
+      margin: 10px;
+    }
 
-        const header = React.createElement('div', {className: 'header'}, [
-                          React.createElement('nav', null, [
-                            React.createElement('ul', null, [
-                              React.createElement('li', null, [
-                                React.createElement('a', {href: `/`}, 'Home')
-                              ]),
-                              React.createElement('li', null, [
-                                React.createElement('a', {href: `/about`}, 'About')
-                              ]),
-                              React.createElement('li', null, [
-                                React.createElement('a', {href: `/recipes`}, 'Recipes')
-                              ])
-                            ])
-                          ])
-                        ]);
+    .checkbox-form input[type="submit"] {
+      margin: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
 
-        const CheckboxForm = ({ options }) => {
-          const [selectedOptions, setSelectedOptions] = React.useState([]);
-    
-          const handleOptionChange = (changeEvent) => {
-            let newSelectedOptions = [...selectedOptions];
-            if (changeEvent.target.checked) {
-              newSelectedOptions.push(changeEvent.target.value);
-            } else {
-              newSelectedOptions = newSelectedOptions.filter(
-                (selectedOption) => selectedOption !== changeEvent.target.value
-              );
-            }
-            setSelectedOptions(newSelectedOptions);
-          };
-    
-          const handleFormSubmit = (event) => {
-            event.preventDefault();
-            axios
-              .post("{{ url_for('handle_form_submit') }}", {
-                selectedOptions: selectedOptions,
-              })
-              .then(function (response) {
-                const recipe_list = response.data.map((recipe, index) => {
-                  return React.createElement('ul', {className: 'recipe-card'}, 
-                                              React.createElement('a', {href: `/recipe/${recipe['name']}`}, recipe['name']),
-                                              React.createElement('div', null, (recipe['missing'].length > 0 ? 'Missing: ' + recipe['missing'].join(', '): 'You have everything :)'))
-                  )
-                });
-                return ReactDOM.render(
-                  recipe_list,
-                  document.getElementById("root")
-                );
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-          };    
-          const checkboxElements = options.map((option, index) =>
-            React.createElement("div", { key: option },
-              React.createElement("input", {
-                type: "checkbox",
-                value: option,
-                onChange: handleOptionChange,
-              }),
-              option,
-              React.createElement("br")
-            )
-          );
-    
-          return React.createElement("form", { onSubmit: handleFormSubmit, className: 'checkbox-form' },
-            checkboxElements,
-            React.createElement("input", { type: "submit", value: "Submit" })
-          );
+<body>
+  <div id="root"></div>
+  <script>
+    const layout = (props) => {
+
+      const header = React.createElement('div', { className: 'header' }, [
+        React.createElement('nav', null, [
+          React.createElement('ul', null, [
+            React.createElement('li', null, [
+              React.createElement('a', { href: `/` }, 'Home')
+            ]),
+            React.createElement('li', null, [
+              React.createElement('a', { href: `/about` }, 'About')
+            ]),
+            React.createElement('li', null, [
+              React.createElement('a', { href: `/recipes` }, 'Recipes')
+            ])
+          ])
+        ])
+      ]);
+
+      const CheckboxForm = ({ options }) => {
+        const [selectedOptions, setSelectedOptions] = React.useState([]);
+
+        const handleOptionChange = (changeEvent) => {
+          let newSelectedOptions = [...selectedOptions];
+          if (changeEvent.target.checked) {
+            newSelectedOptions.push(changeEvent.target.value);
+          } else {
+            newSelectedOptions = newSelectedOptions.filter(
+              (selectedOption) => selectedOption !== changeEvent.target.value
+            );
+          }
+          setSelectedOptions(newSelectedOptions);
         };
+
+        const handleFormSubmit = (event) => {
+          event.preventDefault();
+          axios
+            .post("{{ url_for('handle_form_submit') }}", {
+              selectedOptions: selectedOptions,
+            })
+            .then(function (response) {
+              const recipe_list = response.data.map((recipe, index) => {
+                return React.createElement('ul', { className: 'recipe-card' },
+                  React.createElement('a', { href: `/recipe/${recipe['name']}` }, recipe['name']),
+                  React.createElement('div', null, (recipe['missing'].length > 0 ? 'Missing: ' + recipe['missing'].join(', ') : 'You have everything :)'))
+                )
+              });
+              return ReactDOM.render(
+                recipe_list,
+                document.getElementById("root")
+              );
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        };
+        const checkboxElements = options.map((option, index) =>
+          React.createElement("div", { key: option },
+            React.createElement("input", {
+              type: "checkbox",
+              value: option,
+              onChange: handleOptionChange,
+            }),
+            option,
+            React.createElement("br")
+          )
+        );
+
+        return React.createElement("form", { onSubmit: handleFormSubmit, className: 'checkbox-form' },
+          checkboxElements,
+          React.createElement("input", { type: "submit", value: "Submit" })
+        );
+      };
 
       const PhotoGrid = ({ photos }) => {
         const [hoveredPhoto, setHoveredPhoto] = React.useState([]);
@@ -112,7 +113,7 @@
           }, [
             React.createElement("img", {
               src: `../static/${photo.src}`,
-              style: { width: '400px', padding: '10px'},
+              style: { width: '400px', padding: '10px' },
               alt: photo.caption,
               key: photo.caption + "-img",
             }),
@@ -124,48 +125,46 @@
             }, photo.caption))
           ])
         );
-      
 
-        return React.createElement('div', {className: 'photo-full'}, React.createElement("div", {
+
+        return React.createElement('div', { className: 'photo-full' }, React.createElement('div', {
           className: "photo-grid",
         }, imgElements));
       }
-        
-        const options = props.ingredients;      
-        checkbox = React.createElement(CheckboxForm, { options });
-        photo_grid = React.createElement(PhotoGrid, { photos });
-        
-        const title = React.createElement("div", null, 
-          React.createElement('div', {className: 'recipe-title'}, 'Pantry'),
-          React.createElement("hr", {className: 'solid'})
-        );
-        const recipe_header = React.createElement("div", {className: 'recipe-card__heading'}, "Recipes");
-        const List = props.recipes.map((recipe, index) => {
-          return React.createElement('ul', null, React.createElement('a', {href: `/recipe/${recipe}`}, recipe))
-        });
-        const about_section = React.createElement('div', null, 
-          React.createElement('div', {className: 'recipe-card__heading'}, 'About'),
-          React.createElement('p', {className: 'recipe-card__body'}, 'I think cooking can be really fun and it should be about the experience! With my methods, there will be no exact measurements, just sights, sounds, and smells. Let\'s get started. Just tell me what is in your pantry, and I will come up with some recipes, or you can explore all options below.')
-        );
 
-        const ingredient_section = React.createElement('div', null, 
-          React.createElement('div', {className: 'recipe-card__heading'}, 'Ingredients'),
-        );
+      const options = props.ingredients;
+      checkbox = React.createElement(CheckboxForm, { options });
+      photo_grid = React.createElement(PhotoGrid, { photos });
 
-
-        const recipe_section = React.createElement('div', null, recipe_header, photo_grid);
-        return React.createElement('div', {className: 'recipe-card'}, header, title, about_section, ingredient_section, checkbox, recipe_section);
-
-      };
-
-      const recipes = {{ recipes|tojson|safe }};
-      const ingredients = {{ ingredients|tojson|safe }};
-      const photos = {{ photos|tojson|safe }};
-
-      ReactDOM.render(
-        React.createElement(layout, { recipes: recipes, ingredients: ingredients, photos: photos}),
-        document.getElementById("root")
+      const title = React.createElement("div", null,
+        React.createElement('div', { className: 'recipe-title' }, 'Pantry'),
+        React.createElement("hr", { className: 'solid' })
       );
-    </script>
-  </body>
+      const recipe_header = React.createElement("div", { className: 'recipe-card__heading' }, "Recipes");
+
+      const about_section = React.createElement('div', null,
+        React.createElement('div', { className: 'recipe-card__heading' }, 'About'),
+        React.createElement('p', { className: 'recipe-card__body' }, 'I think cooking can be really fun and it should be about the experience! With my methods, there will be no exact measurements, just sights, sounds, and smells. Let\'s get started. Just tell me what is in your pantry, and I will come up with some recipes, or you can explore all options below.')
+      );
+
+      const ingredient_section = React.createElement('div', null,
+        React.createElement('div', { className: 'recipe-card__heading' }, 'Ingredients'),
+      );
+
+
+      const recipe_section = React.createElement('div', { className: 'recipe-card__body' }, recipe_header, photo_grid);
+      return React.createElement('div', { className: 'recipe-card' }, header, title, about_section, ingredient_section, checkbox, recipe_section);
+
+    };
+
+    const ingredients = {{ ingredients| tojson | safe }};
+    const photos = {{ photos| tojson | safe }};
+
+    ReactDOM.render(
+      React.createElement(layout, { ingredients: ingredients, photos: photos }),
+      document.getElementById("root")
+    );
+  </script>
+</body>
+
 </html>
