@@ -34,7 +34,7 @@ def get_recipe_photos():
 def handle_form_submit():
     selected_ingredients = request.get_json().get('selectedOptions')
     tops = get_top_recipes(selected_ingredients)
-    return list(tops)
+    return dict(tops)
 
 
 @app.route('/', methods=['GET', 'POST'])

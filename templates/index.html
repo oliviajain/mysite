@@ -69,6 +69,7 @@
               selectedOptions: selectedOptions,
             })
             .then(function (response) {
+              console.log(response.data);
               const recipe_list = response.data.map((recipe, index) => {
                 return React.createElement('ul', { className: 'recipe-card' },
                   React.createElement('a', { href: `/recipe/${recipe['name']}` }, recipe['name']),
