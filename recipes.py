@@ -27,7 +27,7 @@ recipes = {
             'veggie broth',
             'chilies',
             'cumin',
-            'red chili powder',
+            'chili powder',
             'tortilla',
             'green salsa',
             'onion',
@@ -39,7 +39,7 @@ recipes = {
             'Meanwhile, chop cilantro and dice 1/4 of a white onion. Set aside as your toppings.',
             'Crumble and marinate tofu in soy sauce. Bake or airfry at 400 degrees for 15 minutes.',
             'In a pan, saute chilies in olive oil. Add in crumbled tofu and pour in veggie broth until you can see the liquid on the pan.',
-            'Add in two big spoons of tomato sauce, and a spoon of cumin and red chili powder each. Mix well and bring to a simmer.',
+            'Add in two big spoons of tomato sauce, and a spoon of cumin and chili powder each. Mix well and bring to a simmer.',
             'Mix the tofu and cook unti the tofu absorbs all the liquid. This will make it quite juicy.',
             'Remove the tofu once colored and a little golden.',
             'Assemble your taco on a tortilla with chopped onion, green salsa, and top with cilantro.'
@@ -206,16 +206,17 @@ recipes = {
             'veggie broth',
             'chilies',
             'cumin',
-            'red chili powder',
+            'chili powder',
             'green salsa',
             'red onion',
             'corn',
             'jalapeno',
             'black beans',
             'avocado',
-            'lime'
+            'lime',
             'cilantro',
-            'feta'
+            'feta', 
+            'salt'
         ],
         'instructions': [
             'Reference tofu tacos to prepare tofu.',
@@ -254,7 +255,7 @@ recipes = {
             'sriracha',
             'ketchup',
             'maple syrup',
-            'lime juice',
+            'lime',
             'tofu',
             'onion',
             'green bell pepper',
