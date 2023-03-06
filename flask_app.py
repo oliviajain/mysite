@@ -19,7 +19,7 @@ def get_top_recipes(selected_ingredients):
         missing = recipe_ingredients.difference(ingredients)
         infos.append({'name': recipe_name, 'missing': list(missing)})
     infos.sort(key=lambda x: len(x['missing']))
-    return infos[:5]
+    return {x['name']: x['missing'] for x in infos[:5]}
 
 
 def get_recipe_photos():
@@ -34,7 +34,7 @@ def get_recipe_photos():
 def handle_form_submit():
     selected_ingredients = request.get_json().get('selectedOptions')
     tops = get_top_recipes(selected_ingredients)
-    return dict(tops)
+    return tops
 
 
 @app.route('/', methods=['GET', 'POST'])
