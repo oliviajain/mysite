@@ -80,8 +80,8 @@
                         .then(function (response) {
                             const recipe_list = Object.keys(response.data).map((recipe_name) => {
                                 return React.createElement('ul', { className: 'recipe-card' },
-                                    React.createElement('a', { href: `/recipes/${recipe_name}` }, recipe_name),
-                                    React.createElement('div', null, 'Missing: ' + response.data[recipe_name].join(', '))
+                                    React.createElement('a', { href: `/recipe/${recipe_name}` }, recipe_name),
+                                    React.createElement('div', null, (response.data[recipe_name].length > 0 ? 'Missing: ' + response.data[recipe_name].join(', ') : 'You have everything :)'))
                                 )
                             });
                             return ReactDOM.render(
