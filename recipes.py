@@ -340,5 +340,31 @@ recipes = {
             'Once the gnocchi is ready, add to sauce with whatever pasta water comes with the gnocchi and mix well.',
             'Serve warm, so reheat for 1 minute if needed.'
         ]
+    },  "Mushroom Bisque": {
+        'name': 'Mushroom Bisque',
+        'image': 'mushroom_bisque.jpg',
+        'ingredients': [
+            'mushrooms',
+            'thyme',
+            'soy sauce',
+            'veggie broth',
+            'onions',
+            'coconut milk',
+            'butter',
+            'oregano',
+            'salt'
+        ],
+        'instructions': [
+            'Slice one pack of mushrooms and sliver one white onion.',
+            'In an instant pot or pot, brown 3 tablespoons of butter.',
+            'Add the onions and mushrooms and saute until they are both well browned.',
+            'Then pour in a big splash of soy sauce until absorped, just a few minutes.', 
+            'Deglaze the pot with 1/2 cup of veggie broth and 2 cups water and add coconut milk until the broth becomes opaque.',
+            'Bring to a boil for about 10 minutes.',
+            'While boiling, destem lots of thyme.',
+            'Take off heat and mix in thyme and oregano.',
+            'Adjust taste with salt, pepper, coconut milk, and soy sauce.',
+            'Garnish with thyme.'
+        ]
     }
 }
