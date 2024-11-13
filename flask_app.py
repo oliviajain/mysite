@@ -1,8 +1,9 @@
 from flask import Flask, render_template, jsonify, request, redirect
 from recipes import recipes
+import os
 
 app = Flask(__name__)
-
+port = int(os.environ.get('PORT', 4000))
 
 def get_all_ingredients():
     all_ingredients = set()
@@ -61,4 +62,4 @@ def recipe(recipe_name):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=port)
