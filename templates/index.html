@@ -1,171 +1,59 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
-  <style>
-    /* Checkbox Form */
-    .checkbox-form {
-      display: flex;
-      flex-wrap: wrap;
-      font-size: 16px;
-    }
-
-    .checkbox-form input[type="checkbox"] {
-      flex: 1 0 33%;
-      margin: 10px;
-    }
-
-    .checkbox-form input[type="submit"] {
-      margin: 10px;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Main App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index/stylesheet.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: center;
+            background-color: #fff0f5;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .app-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        .app-links li {
+            margin: 20px 0;
+        }
+        .app-links a {
+            text-decoration: none;
+            color: white;
+            background-color: #ff69b4;
+            padding: 15px 30px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        .app-links a:hover {
+            background-color: #ff1493;
+        }
+    </style>
 </head>
-
 <body>
-  <div id="root"></div>
-  <script>
-    const layout = (props) => {
-
-      const header = React.createElement('div', { className: 'header' }, [
-        React.createElement('nav', null, [
-          React.createElement('ul', null, [
-            React.createElement('li', null, [
-              React.createElement('a', { href: `/` }, 'Home')
-            ]),
-            React.createElement('li', null, [
-              React.createElement('a', { href: `/about` }, 'About')
-            ]),
-            React.createElement('li', null, [
-              React.createElement('a', { href: `/recipes` }, 'Recipes')
-            ])
-          ])
-        ])
-      ]);
-
-      const CheckboxForm = ({ options }) => {
-        const [selectedOptions, setSelectedOptions] = React.useState([]);
-
-        const handleOptionChange = (changeEvent) => {
-          let newSelectedOptions = [...selectedOptions];
-          if (changeEvent.target.checked) {
-            newSelectedOptions.push(changeEvent.target.value);
-          } else {
-            newSelectedOptions = newSelectedOptions.filter(
-              (selectedOption) => selectedOption !== changeEvent.target.value
-            );
-          }
-          setSelectedOptions(newSelectedOptions);
-        };
-
-        const handleFormSubmit = (event) => {
-          event.preventDefault();
-          axios
-            .post("{{ url_for('handle_form_submit') }}", {
-              selectedOptions: selectedOptions,
-            })
-            .then(function (response) {
-              console.log(response.data);
-              const recipe_list = Object.keys(response.data).map((recipe_name) => {
-                return React.createElement('ul', { className: 'recipe-card' },
-                  React.createElement('a', { href: `/recipe/${recipe_name}` }, recipe_name),
-                  React.createElement('div', null, (response.data[recipe_name].length > 0 ? 'Missing: ' + response.data[recipe_name].join(', ') : 'You have everything :)'))
-                )
-              });
-              return ReactDOM.render(
-                recipe_list,
-                document.getElementById("root")
-              );
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        };
-        const checkboxElements = options.map((option, index) =>
-          React.createElement("div", { key: option },
-            React.createElement("input", {
-              type: "checkbox",
-              value: option,
-              onChange: handleOptionChange,
-            }),
-            option,
-            React.createElement("br")
-          )
-        );
-
-        return React.createElement("form", { onSubmit: handleFormSubmit, className: 'checkbox-form' },
-          checkboxElements,
-          React.createElement("input", { type: "submit", value: "Submit" })
-        );
-      };
-
-      const PhotoGrid = ({ photos }) => {
-        const [hoveredPhoto, setHoveredPhoto] = React.useState([]);
-        const imgElements = photos.map((photo) =>
-          React.createElement("div", {
-            className: "photo-container",
-            key: photo.src,
-            onMouseOver: () => setHoveredPhoto(photo),
-            onMouseLeave: () => setHoveredPhoto(null),
-          }, [
-            React.createElement("img", {
-              src: `../static/${photo.src}`,
-              style: { width: '400px', padding: '10px' },
-              alt: photo.caption,
-              key: photo.caption + "-img",
-            }),
-            hoveredPhoto === photo && React.createElement("div", {
-              className: "photo-caption",
-              key: photo.src + "-caption",
-            }, React.createElement('a', {
-              href: photo.link
-            }, photo.caption))
-          ])
-        );
-
-
-        return React.createElement('div', { className: 'photo-full' }, React.createElement('div', {
-          className: "photo-grid",
-        }, imgElements));
-      }
-
-      const options = props.ingredients;
-      checkbox = React.createElement(CheckboxForm, { options });
-      photo_grid = React.createElement(PhotoGrid, { photos });
-
-      const title = React.createElement("div", null,
-        React.createElement('div', { className: 'recipe-title' }, 'Pantry'),
-        React.createElement("hr", { className: 'solid' })
-      );
-      const recipe_header = React.createElement("div", { className: 'recipe-card__heading' }, "Recipes");
-
-      const about_section = React.createElement('div', null,
-        React.createElement('div', { className: 'recipe-card__heading' }, 'About'),
-        React.createElement('p', { className: 'recipe-card__body' }, 'I think cooking can be really fun and it should be about the experience! With my methods, there will be no exact measurements, just sights, sounds, and smells. Let\'s get started. Just tell me what is in your pantry, and I will come up with some recipes, or you can explore all options below.')
-      );
-
-      const ingredient_section = React.createElement('div', null,
-        React.createElement('div', { className: 'recipe-card__heading' }, 'Ingredients'),
-      );
-
-
-      const recipe_section = React.createElement('div', { className: 'recipe-card__body' }, recipe_header, photo_grid);
-      return React.createElement('div', { className: 'recipe-card' }, header, title, about_section, ingredient_section, checkbox, recipe_section);
-
-    };
-
-    const ingredients = {{ ingredients| tojson | safe }};
-    const photos = {{ photos| tojson | safe }};
-
-    ReactDOM.render(
-      React.createElement(layout, { ingredients: ingredients, photos: photos }),
-      document.getElementById("root")
-    );
-  </script>
+    <div class="container">
+        <div class="header">
+            <h1>What Would You Like To Do?</h1>
+        </div>
+        <ul class="app-links">
+            <p>Delicious, easy recipes with ingredients you already have.</p>
+            <li><a href="/cookbook">The Pantry Cookbook</a></li>
+            <p>Daily journal with thoughtful prompts.</p>
+            <li><a href="/journal">One Question a Day</a></li>
+            <p>Skip the dealer, do it yourself.</p>
+            <li><a href="/car">Car Maintenance List</a></li>
+        </ul>
+    </div>
 </body>
-
 </html>

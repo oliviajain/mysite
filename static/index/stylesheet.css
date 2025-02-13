@@ -1,0 +1,74 @@
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffe4e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p, a, span, div, input, button, label {
+    font-family: inherit;
+  }
+  
+  .mySlides {
+    display: none;
+  }
+  
+  /* Button styles */
+  .w3-button.w3-blue {
+      background-color: #ff69b4;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+  }
+  
+  .w3-button.w3-blue:hover {
+      background-color: #ff1493;
+  }
+  
+  /* Container styles */
+  .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      text-align: center;
+      background-color: #fff0f5;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-links {
+      list-style-type: none;
+      padding: 0;
+  }
+  
+  .app-links li {
+      margin: 20px 0;
+  }
+  
+  .app-links a {
+      text-decoration: none;
+      color: white;
+      background-color: #ff69b4;
+      padding: 15px 30px;
+      border-radius: 5px;
+      display: inline-block;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+  }
+  
+  .app-links a:hover {
+      background-color: #ff1493;
+  }

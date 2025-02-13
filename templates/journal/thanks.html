@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='journal/stylesheet.css') }}">
+</head>
+<body class="w3-light-grey">
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large" href="{{ url_for(journal.responses', user_id=user.id) }}">RESPONSES</a>
+    <a class="w3-bar-item w3-button w3-padding-large w3-right" href="/journal">LOGOUT</a>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1400px; margin-top:46px">
+
+    <!-- Thank You Message -->
+    <div class="w3-card-4 w3-margin w3-white">
+        <div class="w3-container form-container">
+            <h1>Thank You!</h1>
+            <p>You've completed all the questions. We appreciate your participation!</p>
+            <a href="{{ url_for('responses', user_id=user.id) }}" class="w3-button w3-black w3-margin-top">See Your Answers</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

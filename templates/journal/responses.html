@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Responses</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='journal/stylesheet.css') }}">
+</head>
+<body class="w3-light-grey">
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large" href="{{ url_for('journal.questions', user_id=user.id) }}">NEXT QUESTION</a>
+    <a class="w3-bar-item w3-button w3-padding-large w3-right" href="/journal">LOGOUT</a>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1400px; margin-top:46px">
+
+    <!-- Header -->
+    <header class="w3-container w3-center w3-padding-32"> 
+        <h1>{{ user.name }}'s Responses</h1>
+    </header>
+
+    <!-- Answers Table -->
+    <div class="w3-card-4 w3-margin w3-white">
+        <div class="w3-container form-container">
+            <table class="w3-table w3-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Question</th>
+                        <th>Your Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for answer in answers %}
+                    <tr>
+                        <td class="date-column">{{ answer.answer_date }}</td>
+                        <td>{{ answer.question }}</td>
+                        <td>{{ answer.answer }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

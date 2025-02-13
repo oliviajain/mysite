@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='journal/stylesheet.css') }}">
+</head>
+<body class="w3-light-grey">
+
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+        <a class="w3-bar-item w3-button w3-padding-large" href="{{ url_for('journal.responses', user_id=user.id) }}">RESPONSES</a>
+        <a class="w3-bar-item w3-button w3-padding-large w3-right" href="/">LOGOUT</a>
+    </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1400px; margin-top:46px">
+
+    <!-- Header -->
+    <header class="w3-container w3-center w3-padding-32"> 
+        <h1>Welcome, {{ user.name }}</h1>
+    </header>
+
+    <!-- Question and Form -->
+    <div class="w3-card-4 w3-margin w3-white">
+        <div class="w3-container form-container">
+            <p>{{ question }}</p>
+            <form action="" method="post" id="answerForm">
+                <label for="answer">Your answer:</label>
+                <textarea id="answer" name="answer" required class="w3-input w3-border" rows="4" style="resize: none;"></textarea>
+                <button type="submit" class="w3-button w3-black w3-margin-top">Next</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.getElementById('answer').addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.key === 'Enter') {
+            event.preventDefault();
+            const textarea = event.target;
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            textarea.value = textarea.value.substring(0, start) + '\n' + textarea.value.substring(end);
+            textarea.selectionStart = textarea.selectionEnd = start + 1;
+        }
+    });
+</script>
+
+</body>
+</html>

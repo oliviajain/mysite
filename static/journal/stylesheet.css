@@ -1,0 +1,45 @@
+/* General styles */
+body {
+  font-family: "Lato", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, span, div, input, button, label {
+  font-family: inherit;
+}
+
+.mySlides {
+  display: none;
+}
+
+/* Button styles */
+.w3-button.w3-blue {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.w3-button.w3-blue:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.w3-button.w3-blue:active {
+    background-color: #004494;
+    transform: scale(1);
+}
+
+.w3-table td {
+  word-wrap: break-word;
+  white-space: pre-wrap; /* Preserve whitespace and wrap text */
+  overflow-wrap: break-word; /* Handle long words */
+  word-break: break-word; /* Ensure words break correctly */
+}
+
+.date-column {
+  width: 140px; /* Adjust the width as needed */
+}
