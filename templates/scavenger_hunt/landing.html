@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditi's Scavenger Hunt</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scavenger_hunt/style.css') }}">
+    <style>
+        .instruction-box {
+            background-color: #f0f8ff;
+            border-left: 5px solid lightgrey;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .instruction-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instruction-box li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
+
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+        <a class="w3-bar-item w3-button w3-padding-large" href="/">HOME</a>
+    </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:900px; margin-top:46px">
+
+    <!-- Header -->
+    <header class="w3-container w3-center w3-padding-32"> 
+        <h1>🎉 Welcome to Aditi's Scavenger Hunt! 🎉</h1>
+        <p class="w3-large w3-text-grey">An adventure awaits you in Berlin</p>
+    </header>
+
+    <!-- Instructions Card -->
+    <div class="w3-card-4 w3-margin w3-white w3-round">
+        <div class="w3-container w3-padding-32">
+            <h2>📋 Instructions</h2>
+            
+            <div class="instruction-box">
+                <h3>How It Works:</h3>
+                <ul>
+                    <li><strong>Follow the clues:</strong> You'll receive a series of riddles and clues that will guide you to different locations around Berlin.</li>
+                    <li><strong>Answer each clue:</strong> Type your answer in the text box. Don't worry if you get stuck — after 5 wrong attempts, the answer will be revealed!</li>
+                    <li><strong>Choose your adventure:</strong> After completing the main clues, you'll get to choose between two different paths for your final challenge. This task doesn't have to be completed the same day.</li>
+                    <li><strong>Take your time:</strong> There's no rush! Enjoy each location and experience along the way. It's meant to take all weekday, but you can break it into two days as the clues indicate.</li>
+                </ul>
+            </div>
+
+            <div class="instruction-box">
+                <h3>💡 Tips:</h3>
+                <ul>
+                    <li>Answers are <strong>case insensitive</strong> — no need to worry about capitals!</li>
+                    <li>Use the app you've worked so hard on all these years to find your answers.</li>
+                    <li>Read each clue carefully — the details matter!</li>
+                    <li>Bring your phone charged, good walking shoes, and a pen. Cost is covered via venmo.</li>
+                    <li>Don't forget to capture your journey in the journal you'll pick up along the way!</li>
+                </ul>
+            </div>
+
+            <div class="w3-center w3-margin-top" style="padding: 20px;">
+                <p class="w3-large"><em>Ready to begin your Berlin adventure?</em></p>
+                <a href="{{ url_for('scavenger_hunt.start') }}" class="w3-button w3-black w3-round w3-large" style="padding: 15px 40px; margin-top: 10px;">
+                    Start the Hunt! 🚀
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer message -->
+    <div class="w3-container w3-center w3-padding-32">
+        <p class="w3-text-grey"><em>Have fun and enjoy every moment! 💙</em></p>
+    </div>
+
+</div>
+
+</body>
+</html>
+
