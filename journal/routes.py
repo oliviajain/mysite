@@ -1,5 +1,5 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for
-from .database import init_db, db, User, Answer
+from flask import Blueprint, render_template, request, redirect, url_for
+from .database import db, User, Answer
 from .questions import QUESTIONS
 
 journal_bp = Blueprint('journal', __name__, url_prefix='/journal')
