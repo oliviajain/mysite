@@ -1,0 +1,183 @@
+/* ------------------------------------------------------------------
+   One stylesheet for the whole site.
+   Each section has its own color (--tone), set by <body data-tone="...">.
+   Change the colors and fonts in :root and everything follows.
+------------------------------------------------------------------- */
+:root {
+  --ink: #241B2F;
+  --muted: #6A6174;
+  --line: #E7E2EC;
+  --field: #D5CEDC;
+  --tomato: #E8552B;
+
+  --butter: #FFD95A;
+  --apricot: #FFB58A;
+  --blush: #FFC2D1;
+
+  --display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --text: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+body[data-tone="butter"]  { --tone: var(--butter); }
+body[data-tone="apricot"] { --tone: var(--apricot); }
+body[data-tone="blush"]   { --tone: var(--blush); }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--text);
+}
+
+/* ---------- Type ---------- */
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+}
+h1 { font-size: clamp(2.6rem, 9vw, 4.75rem); }
+h2 { font-size: 1.75rem; line-height: 1.15; letter-spacing: -0.02em; margin-top: 3rem; }
+h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.015em; }
+p  { margin: 0 0 1rem; }
+.lede  { font-size: 1.25rem; line-height: 1.5; max-width: 34rem; margin: 1rem 0 0; }
+.muted { color: var(--muted); }
+
+a { color: var(--ink); text-decoration-color: var(--tomato); text-decoration-thickness: 2px; text-underline-offset: 0.22em; }
+a:hover { text-decoration-color: var(--ink); }
+
+:focus-visible { outline: 3px solid var(--tomato); outline-offset: 3px; border-radius: 6px; }
+
+/* ---------- Layout ---------- */
+.wrap { max-width: 42rem; margin: 0 auto; padding: 0 1.25rem; }
+.wrap--wide { max-width: 68rem; }
+main.wrap { padding-top: 3rem; padding-bottom: 5rem; }
+
+.site-nav { background: #fff; }
+.site-nav.on-tone { background: var(--tone); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
+.nav-home { font: 700 1.2rem/1 var(--display); letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+.nav-home:hover { text-decoration: underline; text-decoration-color: var(--ink); text-underline-offset: 0.3em; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; opacity: 0.75; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; }
+.nav-links a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--ink); text-underline-offset: 0.35em; }
+
+.hero { background: var(--tone); padding: 2rem 0 3.5rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  background: var(--ink);
+  color: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font: 600 1rem/1.3 var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.btn:hover { background: #3B2D4A; border-color: #3B2D4A; color: #fff; }
+.btn--quiet { background: transparent; color: var(--ink); }
+.btn--quiet:hover { background: var(--tone); border-color: var(--ink); color: var(--ink); }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+/* ---------- Forms ---------- */
+label, legend { font-weight: 600; }
+.field label { display: block; margin-bottom: 0.4rem; }
+input[type="text"], textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  color: var(--ink);
+  border: 2px solid var(--field);
+  border-radius: 14px;
+  font: 400 1.0625rem/1.5 var(--text);
+}
+input[type="text"]:focus, textarea:focus { border-color: var(--ink); outline: 0; box-shadow: 0 0 0 4px var(--tone); }
+textarea { resize: vertical; min-height: 9rem; }
+form .btn { margin-top: 1.25rem; }
+
+/* ---------- Home ---------- */
+.home-head { padding-top: 3.5rem; padding-bottom: 2.5rem; }
+.home-head h1 { max-width: 14ch; margin: 0; }
+.band { display: block; padding: 2.75rem 0 3rem; color: var(--ink); text-decoration: none; }
+.band--butter  { background: var(--butter); }
+.band--blush   { background: var(--blush); }
+.band--apricot { background: var(--apricot); }
+.band-title { display: block; font: 700 clamp(2rem, 7vw, 3.75rem)/1.05 var(--display); letter-spacing: -0.035em; }
+.band-desc  { display: block; margin-top: 0.6rem; font-size: 1.2rem; }
+.band:hover .band-title { text-decoration: underline; text-decoration-thickness: 0.06em; text-underline-offset: 0.14em; }
+
+/* ---------- Car ---------- */
+.frame { margin: 0; }
+.frame img { display: block; max-width: 100%; height: auto; margin: 0 auto; border: 2px solid var(--line); border-radius: 14px; }
+
+/* ---------- Journal ---------- */
+.question { font: 600 clamp(1.7rem, 5vw, 2.4rem)/1.2 var(--display); letter-spacing: -0.02em; margin: 0.25rem 0 2rem; }
+.entry { padding: 1.5rem 0; border-top: 2px solid var(--line); }
+.entry:last-child { border-bottom: 2px solid var(--line); }
+.entry time { display: block; color: var(--muted); font-size: 0.9rem; font-weight: 500; }
+.entry-question { font: 600 1.25rem/1.3 var(--display); letter-spacing: -0.015em; margin: 0.2rem 0 0.5rem; }
+.entry-answer { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* ---------- Cookbook ---------- */
+.about { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
+.about img { width: 13rem; max-width: 100%; height: auto; border-radius: 14px; }
+.about-text { flex: 1 1 18rem; }
+
+.finder { border: 0; padding: 0; margin: 0; }
+form.finder { margin-top: 0; }
+.finder legend { font: 700 1.75rem/1.15 var(--display); letter-spacing: -0.02em; margin-bottom: 0.25rem; padding: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.chip { font-weight: 400; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: #fff;
+  border: 2px solid var(--field);
+  border-radius: 999px;
+  font-size: 0.975rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.chip span:hover { border-color: var(--ink); }
+.chip input:checked + span { background: var(--tone); border-color: var(--ink); font-weight: 600; }
+.chip input:focus-visible + span { outline: 3px solid var(--tomato); outline-offset: 2px; }
+
+.results { margin-top: 2rem; }
+.result { padding: 1rem 0; border-top: 2px solid var(--line); }
+.result:last-child { border-bottom: 2px solid var(--line); }
+.result a { font: 700 1.3rem/1.3 var(--display); letter-spacing: -0.015em; }
+.result p { margin: 0.15rem 0 0; color: var(--muted); }
+
+.recipe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 2rem 1.5rem; margin-top: 1.5rem; }
+.tile { color: inherit; text-decoration: none; }
+.tile img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; background: var(--line); }
+.tile span { display: block; margin-top: 0.65rem; font: 700 1.2rem/1.25 var(--display); letter-spacing: -0.015em; }
+.tile:hover span { text-decoration: underline; text-decoration-color: var(--tomato); text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+
+.recipe-top { display: grid; gap: 2rem; }
+.recipe-top img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.ingredients { list-style: none; margin: 0; padding: 0; }
+.ingredients li { padding: 0.5rem 0; border-bottom: 2px solid var(--line); }
+.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2.75rem 1fr; gap: 0.5rem; align-items: start; padding: 0.85rem 0; }
+.steps li::before {
+  content: counter(step);
+  display: grid; place-items: center;
+  width: 2rem; height: 2rem;
+  background: var(--tone); border-radius: 999px;
+  font: 700 1rem/1 var(--display);
+}
+.steps li span { padding-top: 0.2rem; }
+@media (min-width: 48rem) {
+  .recipe-top { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

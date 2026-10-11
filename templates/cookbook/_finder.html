@@ -1,0 +1,17 @@
+<form id="finder" class="finder" data-endpoint="{{ url_for('cookbook.handle_form_submit') }}" data-recipe-url="{{ url_for('cookbook.recipe', recipe_name='__name__') }}">
+    <fieldset class="finder">
+        <legend>What's in your pantry?</legend>
+        <p class="muted">Tick what you have and we'll find the closest recipes.</p>
+        <div class="chips">
+            {% for ingredient in ingredients %}
+            <label class="chip">
+                <input type="checkbox" value="{{ ingredient }}">
+                <span>{{ ingredient }}</span>
+            </label>
+            {% endfor %}
+        </div>
+    </fieldset>
+    <button type="submit" class="btn">Find recipes</button>
+</form>
+<div id="finder-results" class="results" aria-live="polite"></div>
+<script src="{{ url_for('static', filename='cookbook/finder.js') }}"></script>

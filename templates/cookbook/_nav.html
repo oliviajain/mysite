@@ -1,0 +1,4 @@
+{% set ep = request.endpoint %}
+<a href="{{ url_for('cookbook.index') }}" {% if ep == 'cookbook.index' %}aria-current="page"{% endif %}>Pantry</a>
+<a href="{{ url_for('cookbook.list_recipes') }}" {% if ep == 'cookbook.list_recipes' %}aria-current="page"{% endif %}>Recipes</a>
+<a href="{{ url_for('cookbook.about') }}" {% if ep == 'cookbook.about' %}aria-current="page"{% endif %}>About</a>

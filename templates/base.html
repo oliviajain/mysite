@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% set has_hero = self.hero()|trim|length > 0 %}
+{% set has_main = self.content()|trim|length > 0 %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}mysite{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+</head>
+<body data-tone="{% block tone %}butter{% endblock %}">
+    <header class="site-nav{% if has_hero %} on-tone{% endif %}">
+        <div class="wrap {% block wrap_class %}{% endblock %} nav-inner">
+            <a class="nav-home" href="{{ url_for('home') }}">Home</a>
+            <nav class="nav-links" aria-label="Section">
+                {% block nav_links %}{% endblock %}
+            </nav>
+        </div>
+    </header>
+    {% if has_hero %}
+    <section class="hero">
+        <div class="wrap {{ self.wrap_class() }}">
+            {% block hero %}{% endblock %}
+        </div>
+    </section>
+    {% endif %}
+    {% block full %}{% endblock %}
+    {% if has_main %}
+    <main class="wrap {{ self.wrap_class() }}">
+        {% block content %}{% endblock %}
+    </main>
+    {% endif %}
+    {% block scripts %}{% endblock %}
+</body>
+</html>
