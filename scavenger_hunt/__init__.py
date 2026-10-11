@@ -1,2 +1,0 @@
-# Scavenger Hunt module
-

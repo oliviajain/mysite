@@ -1,61 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index/stylesheet.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            text-align: center;
-            background-color: #fff0f5;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .app-links {
-            list-style-type: none;
-            padding: 0;
-        }
-        .app-links li {
-            margin: 20px 0;
-        }
-        .app-links a {
-            text-decoration: none;
-            color: white;
-            background-color: #ff69b4;
-            padding: 15px 30px;
-            border-radius: 5px;
-            display: inline-block;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-        .app-links a:hover {
-            background-color: #ff1493;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>What Would You Like To Do?</h1>
-        </div>
-        <ul class="app-links">
-            <p>Delicious, easy recipes with ingredients you already have.</p>
-            <li><a href="/cookbook">The Pantry Cookbook</a></li>
-            <p>Daily journal with thoughtful prompts.</p>
-            <li><a href="/journal">One Question a Day</a></li>
-            <p>Skip the dealer, do it yourself.</p>
-            <li><a href="/car">Car Maintenance List</a></li>
-            <p>Happy Birthday! Wear walking shoes.</p>
-            <li><a href="/scavenger_hunt">Aditi's Scavenger Hunt</a></li>
-        </ul>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}mysite{% endblock %}
+{% block wrap_class %}wrap--wide{% endblock %}
+{% block full %}
+<div class="wrap wrap--wide home-head">
+    <h1>What would you like to do?</h1>
+</div>
+<a class="band band--butter" href="{{ url_for('cookbook.index') }}">
+    <span class="wrap wrap--wide" style="display:block;">
+        <span class="band-title">The Pantry Cookbook</span>
+        <span class="band-desc">Delicious, easy recipes with ingredients you already have.</span>
+    </span>
+</a>
+<a class="band band--blush" href="{{ url_for('journal.home') }}">
+    <span class="wrap wrap--wide" style="display:block;">
+        <span class="band-title">One Question a Day</span>
+        <span class="band-desc">Daily journal with thoughtful prompts.</span>
+    </span>
+</a>
+<a class="band band--apricot" href="{{ url_for('car.index') }}">
+    <span class="wrap wrap--wide" style="display:block;">
+        <span class="band-title">Car Maintenance List</span>
+        <span class="band-desc">Skip the dealer, do it yourself.</span>
+    </span>
+</a>
+{% endblock %}

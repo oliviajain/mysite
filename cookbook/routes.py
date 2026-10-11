@@ -1,4 +1,4 @@
-from flask import Blueprint, Flask, render_template, jsonify, request, redirect
+from flask import Blueprint, Flask, abort, render_template, jsonify, request, redirect
 from .recipes import recipes
 import os
 
@@ -57,4 +57,7 @@ def list_recipes():
 
 @cookbook_bp.route('/recipe/<recipe_name>')
 def recipe(recipe_name):
-    return render_template("cookbook/recipe.html", recipe=recipes.get(recipe_name))
+    found = recipes.get(recipe_name)
+    if found is None:
+        abort(404)
+    return render_template("cookbook/recipe.html", recipe=found)

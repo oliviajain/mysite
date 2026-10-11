@@ -26,7 +26,7 @@ def questions(user_id):
     user = User.query.get_or_404(user_id)
 
     if user.current_question >= len(QUESTIONS):
-        return redirect(url_for('thanks', user_id=user.id))
+        return redirect(url_for('journal.thanks', user_id=user.id))
 
     current_question_text = QUESTIONS[user.current_question]
 
