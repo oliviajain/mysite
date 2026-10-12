@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Wedding Planner · Sign in{% endblock %}
+{% block tone %}sage{% endblock %}
+{% block wrap_class %}wrap--wide{% endblock %}
+{% block hero %}
+<div class="login-intro">
+    <p class="eyebrow">Private</p>
+    <h1>Wedding Planner</h1>
+    <p class="lede">A shared planning space for the wedding weekend.</p>
+</div>
+{% endblock %}
+{% block content %}
+<div class="login-shell">
+    <form class="login-card" method="post">
+        <h2>Welcome back.</h2>
+        <p class="muted">Enter the shared password to continue.</p>
+        {% if error %}<p class="form-error" role="alert">{{ error }}</p>{% endif %}
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autofocus autocomplete="current-password">
+        </div>
+        <button class="btn" type="submit">Open planner</button>
+    </form>
+</div>
+{% endblock %}

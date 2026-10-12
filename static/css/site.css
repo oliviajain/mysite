@@ -181,3 +181,144 @@ form.finder { margin-top: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- Wedding planner ---------- */
+body[data-tone="sage"] { --tone: #DDE4D3; --wedding-green: #34463A; --wedding-cream: #F8F5EE; --wedding-brown: #5A4639; }
+.wedding-hero { display:flex; justify-content:space-between; gap:2rem; align-items:flex-end; }
+.eyebrow { margin:0 0 .55rem; font-size:.78rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+.countdown { min-width:8rem; text-align:right; padding-bottom:.35rem; }
+.countdown strong { display:block; font:700 3.2rem/1 var(--display); letter-spacing:-.05em; }
+.countdown span { font-size:.9rem; color:var(--muted); }
+.nav-logout { margin:0; }
+.nav-logout button { border:0; padding:0; background:none; color:var(--ink); font:500 1rem var(--text); opacity:.75; cursor:pointer; }
+.nav-logout button:hover { opacity:1; text-decoration:underline; text-underline-offset:.35em; }
+.status-grid { display:grid; grid-template-columns:repeat(4,1fr); border:2px solid var(--line); border-radius:18px; overflow:hidden; margin-bottom:3.5rem; }
+.stat { padding:1.25rem 1.35rem; min-height:6.5rem; border-right:2px solid var(--line); }
+.stat:last-child { border-right:0; }
+.stat span { display:block; color:var(--muted); font-size:.82rem; margin-bottom:.35rem; }
+.stat strong { display:block; font:700 1.12rem/1.25 var(--display); }
+.planner-layout { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(17rem,.8fr); gap:4rem; align-items:start; }
+.planner-section { scroll-margin-top:2rem; padding-bottom:4rem; }
+.planner-section + .planner-section { border-top:2px solid var(--line); padding-top:3.5rem; }
+.section-heading { display:flex; justify-content:space-between; gap:1rem; align-items:end; margin-bottom:1.5rem; }
+.section-heading h2, .side-card h2 { margin:0; }
+.section-note { color:var(--muted); font-size:.9rem; }
+.task-list { border-top:2px solid var(--ink); }
+.task-row { display:grid; grid-template-columns:4.6rem minmax(0,1fr) 8rem; gap:1rem; align-items:start; padding:1.35rem 0; border-bottom:2px solid var(--line); }
+.priority { display:inline-block; width:max-content; padding:.25rem .55rem; border-radius:999px; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+.priority--high { background:#F3D0C6; }
+.priority--medium { background:#F3E8BC; }
+.priority--low { background:#E2E7DE; }
+.task-copy h3 { margin:0 0 .25rem; }
+.task-copy p { margin:0; color:var(--muted); font-size:.95rem; }
+.task-meta { text-align:right; font-size:.82rem; }
+.task-meta span,.task-meta strong { display:block; }
+.task-meta span { color:var(--muted); }
+.vendor-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.vendor-card,.side-card { border:2px solid var(--line); border-radius:18px; padding:1.3rem; background:#fff; }
+.vendor-card h3 { margin:.9rem 0 .35rem; }
+.vendor-card p { color:var(--muted); font-size:.92rem; min-height:2.8em; }
+.vendor-top { display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
+.vendor-category { font-size:.75rem; color:var(--muted); }
+.status-pill { padding:.2rem .5rem; border-radius:999px; font-size:.7rem; font-weight:700; }
+.status--contracted { background:#DDE8D9; color:#314332; }
+.status--comparing,.status--review { background:#F4E7B9; color:#5A4A19; }
+.status--trial { background:#E8DDE9; color:#513B56; }
+.money-line { display:flex; justify-content:space-between; gap:1rem; border-top:1px solid var(--line); padding-top:.55rem; margin-top:.55rem; font-size:.85rem; }
+.event-list { border-top:2px solid var(--ink); }
+.event-row { display:grid; grid-template-columns:4.5rem 1fr; gap:1.5rem; padding:1.5rem 0; border-bottom:2px solid var(--line); }
+.event-row h3,.event-row p { margin:0 0 .25rem; }
+.event-date { text-align:center; width:4rem; height:4rem; border-radius:50%; background:var(--tone); display:grid; place-content:center; }
+.event-date strong { font:700 1.35rem/1 var(--display); }
+.event-date span { font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; }
+.india-section { background:var(--wedding-cream); margin-left:-1.5rem; margin-right:-1.5rem; padding:2rem 1.5rem 2.5rem !important; border:0 !important; border-radius:20px; }
+.india-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 1.5rem; }
+.india-grid article { display:grid; grid-template-columns:2rem 1fr; gap:.65rem; padding:1rem 0; border-top:1px solid #DDD6C8; }
+.india-grid article > span { font:700 .8rem var(--display); color:var(--wedding-brown); }
+.india-grid h3,.india-grid p { margin:0; }
+.india-grid p { color:var(--muted); font-size:.9rem; margin-top:.2rem; }
+.planner-side { position:sticky; top:1.5rem; display:grid; gap:1rem; }
+.side-card { scroll-margin-top:2rem; }
+.budget-card { background:var(--wedding-green); color:#fff; border-color:var(--wedding-green); }
+.budget-card .eyebrow,.budget-card .muted,.budget-card .fine-print { color:#D9E0D8; }
+.budget-card h2 { font-size:2.35rem; }
+.budget-lines { margin-top:1.3rem; border-top:1px solid rgba(255,255,255,.25); }
+.budget-lines div { display:flex; justify-content:space-between; gap:1rem; padding:.7rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.83rem; }
+.fine-print { font-size:.75rem; line-height:1.4; margin:1rem 0 0; }
+.payment-list > div { display:flex; justify-content:space-between; gap:1rem; padding:.8rem 0; border-bottom:1px solid var(--line); font-size:.82rem; }
+.payment-list > div:last-child { border-bottom:0; }
+.payment-list span strong { display:block; }
+.payment-list span { color:var(--muted); }
+.payment-list span strong,.payment-list b { color:var(--ink); }
+.palette { display:grid; gap:.55rem; margin-top:1rem; }
+.palette span { display:flex; align-items:center; gap:.65rem; font-size:.82rem; }
+.palette i { width:1.4rem; height:1.4rem; border-radius:50%; background:var(--swatch); border:1px solid rgba(0,0,0,.12); }
+.login-intro { max-width:38rem; }
+.login-shell { max-width:28rem; margin:0 auto; }
+.login-card { border:2px solid var(--line); border-radius:20px; padding:2rem; }
+.login-card h2 { margin-top:0; }
+input[type="password"] { width:100%; padding:.85rem 1rem; background:#fff; color:var(--ink); border:2px solid var(--field); border-radius:14px; font:400 1.0625rem/1.5 var(--text); }
+input[type="password"]:focus { border-color:var(--ink); outline:0; box-shadow:0 0 0 4px var(--tone); }
+.form-error { background:#F8E1DA; border-radius:12px; padding:.75rem .9rem; font-size:.9rem; }
+.empty-state { color:var(--muted); padding:1rem 0; }
+@media (max-width: 52rem) {
+  .status-grid { grid-template-columns:1fr 1fr; }
+  .stat:nth-child(2) { border-right:0; }
+  .stat:nth-child(-n+2) { border-bottom:2px solid var(--line); }
+  .planner-layout { grid-template-columns:1fr; gap:0; }
+  .planner-side { position:static; padding-bottom:3rem; }
+  .vendor-grid { grid-template-columns:1fr; }
+}
+@media (max-width: 38rem) {
+  .wedding-hero { display:block; }
+  .countdown { text-align:left; margin-top:1.5rem; }
+  .nav-links { gap:.35rem .8rem; font-size:.9rem; }
+  .status-grid { grid-template-columns:1fr; }
+  .stat { border-right:0; border-bottom:2px solid var(--line); }
+  .stat:last-child { border-bottom:0; }
+  .task-row { grid-template-columns:1fr; gap:.45rem; }
+  .task-meta { text-align:left; display:flex; gap:.6rem; }
+  .india-grid { grid-template-columns:1fr; }
+}
+
+
+/* Wedding milestone checklist */
+.wedding-checklist { padding: 2rem 0 4rem; border-bottom: 2px solid var(--line); }
+.phase-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.65rem; margin:1.5rem 0 1.35rem; }
+.phase-tab { display:flex; gap:.75rem; align-items:center; text-align:left; border:1.5px solid var(--line); border-radius:14px; padding:.85rem; background:#fff; color:var(--ink); cursor:pointer; min-width:0; font:inherit; transition:background .15s,border-color .15s,transform .15s; }
+.phase-tab:hover { border-color:var(--sage,#78836b); transform:translateY(-1px); }
+.phase-tab.is-active { background:#edf0e8; border-color:#758064; box-shadow:inset 0 0 0 1px #758064; }
+.phase-tab-number { display:grid; place-items:center; flex:0 0 2rem; width:2rem; height:2rem; border-radius:50%; background:#e7e9e0; color:#46503c; font-weight:700; }
+.phase-tab.is-active .phase-tab-number { background:#687451; color:white; }
+.phase-tab-copy { min-width:0; }
+.phase-tab-copy strong,.phase-tab-copy small { display:block; }
+.phase-tab-copy strong { font-size:.88rem; line-height:1.25; }
+.phase-tab-copy small { color:var(--muted); font-size:.76rem; margin-top:.3rem; }
+.phase-panel { border:1.5px solid var(--line); border-radius:18px; padding:1.5rem; background:rgba(255,255,255,.7); }
+.phase-panel.is-hidden { display:none; }
+.phase-panel-heading { display:flex; justify-content:space-between; gap:1rem; align-items:start; padding-bottom:1rem; border-bottom:1px solid var(--line); }
+.phase-panel-heading h3 { margin:0 0 .4rem; }
+.phase-panel-heading p { margin:.2rem 0; }
+.phase-progress { white-space:nowrap; color:#46503c; background:#e7e9e0; border-radius:999px; padding:.35rem .65rem; font-size:.78rem; font-weight:600; }
+.checklist-items { display:grid; }
+.checklist-item { display:flex; align-items:center; gap:.8rem; padding:.95rem .2rem; border-bottom:1px solid var(--line); cursor:pointer; }
+.checklist-item:last-child { border-bottom:0; }
+.checklist-checkbox { position:absolute; opacity:0; width:1px; height:1px; }
+.checklist-checkmark { width:1.25rem; height:1.25rem; flex:0 0 1.25rem; border:1.5px solid #9b9f90; border-radius:5px; background:#fff; display:grid; place-items:center; }
+.checklist-checkbox:focus-visible + .checklist-checkmark { outline:3px solid #a9b39a; outline-offset:3px; }
+.checklist-checkbox:checked + .checklist-checkmark { background:#687451; border-color:#687451; }
+.checklist-checkbox:checked + .checklist-checkmark::after { content:"✓"; color:#fff; font-size:.9rem; line-height:1; }
+.checklist-task-title { flex:1; font-size:.94rem; }
+.checklist-item.is-complete .checklist-task-title { color:var(--muted); text-decoration:line-through; }
+.checklist-save-state { color:var(--muted); font-size:.75rem; white-space:nowrap; }
+.checklist-status { margin:.8rem 0 0; color:var(--muted); font-size:.82rem; }
+@media (max-width:760px) {
+  .phase-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .phase-panel { padding:1rem; }
+  .phase-panel-heading { flex-direction:column; }
+}
+@media (max-width:440px) {
+  .phase-tabs { grid-template-columns:1fr; }
+  .checklist-item { gap:.6rem; }
+  .checklist-task-title { font-size:.88rem; }
+}

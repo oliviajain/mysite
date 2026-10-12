@@ -7,6 +7,7 @@ def create_app():
     app = Flask(__name__)
 
     if os.environ.get('FLASK_ENV') == 'production':
+        ProdConfig.validate()
         app.config.from_object(ProdConfig)
     else:
         app.config.from_object(DevConfig)
@@ -20,9 +21,12 @@ def create_app():
     from cookbook.routes import cookbook_bp
     from journal.routes import journal_bp
     from car.routes import car_bp
+    from wedding.routes import wedding_bp
+    
     app.register_blueprint(cookbook_bp)
     app.register_blueprint(journal_bp)
     app.register_blueprint(car_bp)
+    app.register_blueprint(wedding_bp)
 
     @app.route('/')
     def home():

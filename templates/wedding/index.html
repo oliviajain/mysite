@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+{% block title %}Wedding Planner{% endblock %}
+{% block tone %}sage{% endblock %}
+{% block wrap_class %}wrap--wide{% endblock %}
+
+{% block nav_links %}
+<a href="#checklist">Checklist</a>
+<a href="#now">Now</a>
+<a href="#vendors">Vendors</a>
+<a href="#budget">Budget</a>
+<a href="#events">Events</a>
+<a href="#india">India</a>
+<form class="nav-logout" method="post" action="{{ url_for('wedding.logout') }}">
+    <button type="submit">Log out</button>
+</form>
+{% endblock %}
+
+{% block hero %}
+<div class="wedding-hero">
+    <div>
+        <p class="eyebrow">Private wedding planner</p>
+        <h1>{{ data.couple }}</h1>
+        <p class="lede">{{ data.weekend }} · {{ data.location }}</p>
+    </div>
+    <div class="countdown" aria-label="Days until wedding">
+        <strong>{{ days_to_go }}</strong>
+        <span>days to go</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="status-grid" aria-label="Wedding status">
+    <div class="stat"><span>Current focus</span><strong>{{ data.phase }}</strong></div>
+    <div class="stat"><span>Guest count</span><strong>{{ data.guest_count }}</strong></div>
+    <div class="stat"><span>Estimated budget</span><strong>{{ data.budget.estimated or '—' }}</strong></div>
+    <div class="stat"><span>Paid so far</span><strong>{{ data.budget.paid or '—' }}</strong></div>
+</section>
+
+
+<section id="checklist" class="planner-section wedding-checklist" data-csrf-token="{{ csrf_token }}">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Your full timeline</p>
+            <h2>Wedding milestones & checklist</h2>
+            <p class="muted">Move between past, current, and future phases. Your checkmarks save to the server and follow you across devices.</p>
+        </div>
+        <span class="section-note" id="checklist-progress" aria-live="polite">Loading progress…</span>
+    </div>
+    <div class="phase-tabs" role="tablist" aria-label="Wedding planning phases">
+        {% for phase in data.checklist_phases %}
+        <button class="phase-tab{% if loop.first %} is-active{% endif %}" type="button"
+                role="tab" id="tab-{{ phase.id }}" aria-controls="panel-{{ phase.id }}"
+                aria-selected="{{ 'true' if loop.first else 'false' }}"
+                data-phase-tab="{{ phase.id }}">
+            <span class="phase-tab-number">{{ loop.index }}</span>
+            <span class="phase-tab-copy"><strong>{{ phase.title }}</strong><small>{{ phase.date }}</small></span>
+        </button>
+        {% endfor %}
+    </div>
+    {% for phase in data.checklist_phases %}
+    <section class="phase-panel{% if not loop.first %} is-hidden{% endif %}" id="panel-{{ phase.id }}"
+             role="tabpanel" aria-labelledby="tab-{{ phase.id }}" data-phase-panel="{{ phase.id }}">
+        <div class="phase-panel-heading">
+            <div><p class="eyebrow">{{ phase.date }}</p><h3>{{ phase.title }}</h3><p class="muted">{{ phase.goal }}</p></div>
+            <span class="phase-progress" data-phase-progress="{{ phase.id }}"></span>
+        </div>
+        <div class="checklist-items">
+            {% for task in phase.tasks %}
+            <label class="checklist-item{% if task.completed %} is-complete{% endif %}" data-checklist-item>
+                <input type="checkbox" class="checklist-checkbox" data-task-id="{{ task.id }}"
+                       {% if task.completed %}checked{% endif %} aria-label="Mark {{ task.title }} complete">
+                <span class="checklist-checkmark" aria-hidden="true"></span>
+                <span class="checklist-task-title">{{ task.title }}</span>
+                <span class="checklist-save-state" aria-live="polite"></span>
+            </label>
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+    <p class="checklist-status" id="checklist-status" role="status" aria-live="polite">Changes save automatically.</p>
+</section>
+
+<div class="planner-layout">
+    <div class="planner-main">
+        <section id="now" class="planner-section">
+            <div class="section-heading">
+                <div><p class="eyebrow">Right now</p><h2>This is what matters next.</h2></div>
+                <span class="section-note">{{ data.tasks|length }} priorities</span>
+            </div>
+            <div class="task-list">
+                {% for task in data.tasks %}
+                <article class="task-row">
+                    <span class="priority priority--{{ task.priority|lower }}">{{ task.priority }}</span>
+                    <div class="task-copy">
+                        <h3>{{ task.title }}</h3>
+                        <p>{{ task.note }}</p>
+                    </div>
+                    <div class="task-meta"><span>{{ task.owner }}</span><strong>{{ task.due }}</strong></div>
+                </article>
+                {% else %}<p class="empty-state">No current priorities yet.</p>{% endfor %}
+            </div>
+        </section>
+
+        <section id="vendors" class="planner-section">
+            <div class="section-heading"><div><p class="eyebrow">Vendors</p><h2>Decisions & contracts</h2></div></div>
+            <div class="vendor-grid">
+                {% for vendor in data.vendors %}
+                <article class="vendor-card">
+                    <div class="vendor-top"><span class="vendor-category">{{ vendor.category }}</span><span class="status-pill status--{{ vendor.status_key }}">{{ vendor.status }}</span></div>
+                    <h3>{{ vendor.name }}</h3>
+                    <p>{{ vendor.note }}</p>
+                    {% if vendor.total %}<div class="money-line"><span>Total</span><strong>{{ vendor.total }}</strong></div>{% endif %}
+                    {% if vendor.paid %}<div class="money-line"><span>Paid</span><strong>{{ vendor.paid }}</strong></div>{% endif %}
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="events" class="planner-section">
+            <div class="section-heading"><div><p class="eyebrow">Wedding weekend</p><h2>Events</h2></div></div>
+            <div class="event-list">
+                {% for event in data.events %}
+                <article class="event-row">
+                    <div class="event-date"><strong>{{ event.day }}</strong><span>{{ event.month }}</span></div>
+                    <div><h3>{{ event.name }}</h3><p>{{ event.time }} · {{ event.location }}</p><p class="muted">{{ event.note }}</p></div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="india" class="planner-section india-section">
+            <div class="section-heading"><div><p class="eyebrow">Nov–Dec 2026</p><h2>India trip</h2><p class="muted">What needs to be handled before you come home.</p></div></div>
+            <div class="india-grid">
+                {% for item in data.india_trip %}
+                <article><span>{{ loop.index|string|replace('1','01') if loop.index < 10 else loop.index }}</span><div><h3>{{ item.title }}</h3><p>{{ item.note }}</p></div></article>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <aside class="planner-side">
+        <section id="budget" class="side-card budget-card">
+            <p class="eyebrow">Budget snapshot</p><h2>{{ data.budget.estimated or '—' }}</h2><p class="muted">estimated total</p>
+            <div class="budget-lines">
+                <div><span>Contracted / known</span><strong>{{ data.budget.committed or '—' }}</strong></div>
+                <div><span>Paid</span><strong>{{ data.budget.paid or '—' }}</strong></div>
+                <div><span>Still due on known contracts</span><strong>{{ data.budget.remaining or '—' }}</strong></div>
+            </div>
+            <p class="fine-print">Snapshot only — proposals and undecided categories can change the final total.</p>
+        </section>
+
+        <section class="side-card">
+            <p class="eyebrow">Upcoming payments</p><h2>On the calendar</h2>
+            <div class="payment-list">
+                {% for payment in data.payments %}
+                <div><span><strong>{{ payment.date }}</strong>{{ payment.vendor }}</span><b>{{ payment.amount }}</b></div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="side-card design-card">
+            <p class="eyebrow">Design direction</p><h2>{{ data.design.title or 'Wedding design' }}</h2>
+            <p>{{ data.design.note }}</p>
+            <div class="palette" aria-label="Wedding color palette">
+                {% for color in data.design.colors %}<span style="--swatch: {{ color.hex }}" title="{{ color.name }}"><i></i>{{ color.name }}</span>{% endfor %}
+            </div>
+        </section>
+    </aside>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+<script>
+(() => {
+    const root = document.querySelector('.wedding-checklist');
+    if (!root) return;
+    const csrfToken = root.dataset.csrfToken;
+    const tabs = [...root.querySelectorAll('[data-phase-tab]')];
+    const panels = [...root.querySelectorAll('[data-phase-panel]')];
+    const boxes = [...root.querySelectorAll('[data-task-id]')];
+    const status = document.getElementById('checklist-status');
+    const totalProgress = document.getElementById('checklist-progress');
+
+    function showPhase(id) {
+        tabs.forEach(tab => {
+            const active = tab.dataset.phaseTab === id;
+            tab.classList.toggle('is-active', active);
+            tab.setAttribute('aria-selected', String(active));
+        });
+        panels.forEach(panel => panel.classList.toggle('is-hidden', panel.dataset.phasePanel !== id));
+    }
+
+    function updateProgress() {
+        let total = 0, completed = 0;
+        panels.forEach(panel => {
+            const items = [...panel.querySelectorAll('[data-task-id]')];
+            const done = items.filter(box => box.checked).length;
+            total += items.length;
+            completed += done;
+            const badge = panel.querySelector('[data-phase-progress]');
+            if (badge) badge.textContent = `${done} of ${items.length} complete`;
+            items.forEach(box => {
+                const item = box.closest('[data-checklist-item]');
+                if (item) item.classList.toggle('is-complete', box.checked);
+            });
+        });
+        totalProgress.textContent = `${completed} of ${total} tasks complete`;
+    }
+
+    tabs.forEach(tab => tab.addEventListener('click', () => showPhase(tab.dataset.phaseTab)));
+
+    boxes.forEach(box => {
+        box.addEventListener('change', async () => {
+            const item = box.closest('[data-checklist-item]');
+            const saveState = item && item.querySelector('.checklist-save-state');
+            const previous = !box.checked;
+            box.disabled = true;
+            if (saveState) saveState.textContent = 'Saving…';
+            status.textContent = 'Saving your change securely…';
+            try {
+                const response = await fetch(`/wedding/checklist/${encodeURIComponent(box.dataset.taskId)}`, {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfToken
+                    },
+                    body: JSON.stringify({completed: box.checked})
+                });
+                const result = await response.json();
+                if (!response.ok || !result.ok) throw new Error(result.error || 'Could not save this change.');
+                if (saveState) saveState.textContent = 'Saved';
+                status.textContent = 'Saved on the server. Your checklist will be available on your other signed-in devices.';
+                updateProgress();
+                window.setTimeout(() => { if (saveState) saveState.textContent = ''; }, 1800);
+            } catch (error) {
+                box.checked = previous;
+                if (saveState) saveState.textContent = 'Not saved';
+                status.textContent = `${error.message} Your previous checkbox state has been restored.`;
+                updateProgress();
+            } finally {
+                box.disabled = false;
+            }
+        });
+    });
+    updateProgress();
+})();
+</script>
+{% endblock %}

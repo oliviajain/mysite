@@ -1,3 +1,13 @@
 node_modules/
 package.json
 package-lock.json
+# Runtime and private data
+mysite/instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+
